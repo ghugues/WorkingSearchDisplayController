@@ -11,7 +11,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	// Fix status bar disapearing in landscape mode in iOS 8 and later
+	// Fix the status bar disapearing in landscape mode in iOS 8 and later.
 	// The UIViewControllerBasedStatusBarAppearance Info.plist key must also be set to NO.
 	[application setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 	[application setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];

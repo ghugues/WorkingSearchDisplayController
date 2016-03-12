@@ -18,15 +18,15 @@
 		return;
 	}
 
-	// Save frame and perform animations
+	// Save frame and perform animations.
 	CGRect oldSearchBarFrame = searchBarTextField.frame;
 	animations();
 	CGRect newSearchBarFrame = searchBarTextField.frame;
 
-	// Remove all animations for the search bar
+	// Remove all animations for the search bar text field and its subviews.
 	[self removeAllAnimationsForViewHierarchy:searchBarTextField];
 
-	// Redo search bar frame animations
+	// Redo the text field frame animation.
 	[UIView performWithoutAnimation:^{
 		searchBarTextField.frame = oldSearchBarFrame;
 	}];
@@ -41,7 +41,7 @@
 	UIView *searchIcon = [self findSearchBarTextFieldSearchIconInViewHierarchy:searchBarTextField];
 	UIView *searchLabel = [self findSearchBarTextFieldSearchLabelInViewHierarchy:searchBarTextField];
 
-	// Values work for iOS 8 and 9 but might change in the future
+	// These walues work for iOS 8 and 9 but they might change in future iOS releases.
 	CGRect newIconFrame = searchIcon.frame;
 	newIconFrame.origin.x = 8.0;
 	CGRect newLabelFrame = searchLabel.frame;
@@ -53,17 +53,17 @@
 	}];
 }
 
-// Find the UISearchBarTextField
+// Finds the UISearchBarTextField inside the UINavigationBar.
 - (UIView *)findSearchBarTextFieldInViewHierarchy:(UIView *)view {
 	return [self findFirstSubviewOfClass:[UITextField class] inViewHierarchy:view validateWith:nil];
 }
 
-// Find the UISearchBarTextFieldLabel inside UISearchBarTextField
+// Finds the UISearchBarTextFieldLabel inside UISearchBarTextField.
 - (UIView *)findSearchBarTextFieldSearchLabelInViewHierarchy:(UIView *)view {
 	return [self findFirstSubviewOfClass:[UILabel class] inViewHierarchy:view validateWith:nil];
 }
 
-// Find the UIImageView icon inside UISearchBarTextField (but not the _UISearchBarSearchFieldBackgroundView which comes first)
+// Finds the UIImageView icon inside UISearchBarTextField (but not the _UISearchBarSearchFieldBackgroundView which comes first).
 - (UIView *)findSearchBarTextFieldSearchIconInViewHierarchy:(UIView *)view
 {
 	return [self findFirstSubviewOfClass:[UIImageView class] inViewHierarchy:view validateWith:^BOOL (UIView *subview) {
